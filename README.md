@@ -1,0 +1,2 @@
+# baitapC
+C basic
