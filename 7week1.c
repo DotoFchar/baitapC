@@ -5,14 +5,14 @@ int main()
     char s[255];
     printf("Nhap xau: ");
     scanf("%[^\n]", s);
-    int i,one=0;
+    int i,check=0;
     for (i=0; i<strlen(s); i++)
     {
         printf("%c", s[i]);
-        if ((s[i]==' ')&&(one==0))
+        if ((s[i]==' ')&&(check==0))
         {
             printf("\n");
-            one++;
+            check++;
         }
     }
     printf("\n");
