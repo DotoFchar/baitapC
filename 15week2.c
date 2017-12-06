@@ -11,8 +11,8 @@ int getnumber(FILE *file)
 {
     char num[8];
     int n;
-    fgets(num,8,file);
-    n=atoi(num);
+    fgets(num,8,file);//8 la cai gi vay?
+    n=atoi(num);//cau lenh atoi(num)?
     return n;
 }
 
@@ -58,13 +58,12 @@ int main()
             for (i=0;i<n; i++)
             {
                 getnum(&s[i].num,fin);
-                getorder(s[i].order,fin);
-                getname(s[i].name,fin);
-                getmark(&s[i].mark,fin);
-
                 printf(" %d",s[i].num);
+                getorder(s[i].order,fin);
                 printf(" %s",s[i].order);
+                getname(s[i].name,fin);
                 printf(" %s",s[i].name);
+                getmark(&s[i].mark,fin);
                 printf(" %.2f",s[i].mark);
                 printf("\n");
             }
