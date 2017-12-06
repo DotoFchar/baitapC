@@ -13,6 +13,7 @@ int main()
     }
 
     int *p1, *p2, *plim;
+    //doan nay k ro lam plim = a+n roi p1<plim?
     for (p1 = p2 = a, plim= a+n; p1<plim; p1++)
     {
         if (*p1 != x) *p2++= *p1;
