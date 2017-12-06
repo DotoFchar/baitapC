@@ -16,7 +16,7 @@ void same(int a[], int b[], int n, int m)
         }
     }
     printf("So phan tu chung: %d\n", d);
-    printf("Danh sach cac phan tu: ");
+    printf("Danh sach cac phan tu chung: ");
     for (i=0; i<n; i++)
     {
         if (c[i]>0) printf("%d, ", a[i]);
@@ -52,7 +52,7 @@ void show(int a[], int n)
 }
 void sort(int a[], int b[], int n, int m)
 {
-    printf("Sau khi sap xep:\n");
+    printf("Mang sau khi sap xep:\n");
     bubblesort(a,n);
     bubblesort(b,m);
     printf("A: ");
@@ -83,14 +83,14 @@ int main()
     printf("m= ");
     scanf("%d", &m);
 
-    printf("Mang A co n phan tu:   \n");
+    printf("n phan tu cua mang A:   \n");
     for (i=0; i<n; i++)
     {
         printf("A[%d]= ", i+1);
         scanf("%d", &a[i]);
     }
 
-    printf("Mang B co m phan tu:   \n");
+    printf("m phan tu cua mang B:   \n");
     for (i=0; i<m; i++)
     {
         printf("B[%d]= ", i+1);
