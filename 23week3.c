@@ -1,27 +1,25 @@
-/*by Nguyen The Vinh*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 struct stack_student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
     struct stack_student *next;
 };
 
 struct stack_student *head;
 
-void add_top(char *id, char *name, char *cbasic)
+void add_top(char *mssv, char *name, char *mark)
 {
     struct stack_student *link = (struct stack_student *)malloc(sizeof(struct stack_student));
 
-    strcpy(link->id, id);
+    strcpy(link->mssv, mssv);
     strcpy(link->name, name);
-    link->cbasic = (double)atof(cbasic);
-
+    link->mark = (double)atof(mark);
+//ep kieu
     link->next = head;
     head = link;
 }
@@ -32,7 +30,7 @@ void print_stack()
 
     while(print!= NULL)
     {
-        printf("%s,%s,%lf\n", print->id, print->name, print->cbasic);
+        printf("%s,%s,%lf\n", print->mssv, print->name, print->mark);
         print= print->next;
     }
 }
@@ -44,12 +42,12 @@ int main()
     if (f==NULL) perror("Khong doc duoc FILE");
     else 
     {
-        char id[10], name[30], cbasic[10];
+        char mssv[10], name[30], mark[10];
 
         do 
         {
-            if (fscanf(f, "%[^,],%[^,],%s", id, name, cbasic) == EOF) break;
-            add_top(id,name,cbasic);
+            if (fscanf(f, "%[^,],%[^,],%s", mssv, name, mark) == EOF) break;
+            add_top(mssv,name,mark);
         } while(getc(f)!=EOF);
     }
     fclose(f);
