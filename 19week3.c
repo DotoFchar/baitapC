@@ -22,7 +22,7 @@ int menu()
     scanf("%d%*c",&c);
     return c;
 }
-
+//cai ham nay mk tao ra lam gi nhi?lol
 struct student* insertwhere(double mark)
 {
     struct student *insert=head;
