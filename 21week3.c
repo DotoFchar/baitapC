@@ -1,5 +1,3 @@
-/*By Nguyen The Vinh*/
-
 
 #include <stdio.h>
 #include <stdlib.h>
