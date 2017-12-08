@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//chuafixlai
 typedef struct {
     int num;
     char order[10], name[30];
