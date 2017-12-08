@@ -1,5 +1,3 @@
-/*by Nguyen The Vinh*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 8
@@ -7,9 +5,9 @@
 
 struct stack_student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
 };
 
 struct stack_student stack[MAX];
@@ -20,7 +18,7 @@ void print_stack()
     int i=0;
     while (i!=top)
     {
-        printf("%s,%s,%lf\n", stack[i].id, stack[i].name, stack[i].cbasic);
+        printf("%s,%s,%lf\n", stack[i].mssv, stack[i].name, stack[i].mark);
         i++;
     }
 }
@@ -31,10 +29,10 @@ int main()
     f = fopen("sinhvien.dat", "r+");
     do 
     {
-        char cbasic[10];
+        char mark[10];
         top++;
-        if (fscanf(f, "%[^,],%[^,],%s", stack[top].id, stack[top].name, cbasic) == EOF) break;
-        stack[top].cbasic = (double)atof(cbasic);
+        if (fscanf(f, "%[^,],%[^,],%s", stack[top].mssv, stack[top].name, mark) == EOF) break;
+        stack[top].mark = (double)atof(mark);
     } while(getc(f)!=EOF);
     fclose(f);
     print_stack();
