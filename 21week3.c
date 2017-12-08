@@ -7,7 +7,7 @@ struct num
     int data;
     struct num* next;
 };
-
+//tac dung cua han make_NULL?
 void make_NULL(struct num** List)
 {
     *List = NULL;
