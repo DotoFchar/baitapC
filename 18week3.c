@@ -42,12 +42,12 @@ void insert()
     link->mark = mark;
     strcpy(link->name,name);
     strcpy(link->mssv,mssv);
-
+//SAO CHEP CHUOI
     link->next = head;
     head = link;
 }
 
-void printall()
+void printall()//show all
 {
     struct student *prt = head;
     
@@ -68,7 +68,7 @@ int find()
     struct student *fmssv = head;
     while(fmssv != NULL)
     {
-        if (strcmp(fmssv->mssv,mssv)==0) 
+        if (strcmp(fmssv->mssv,mssv)==0) //so sanh
         {
             printf("\nResult: \n");
             printf("\nMSSV: %s", fmssv->mssv);
