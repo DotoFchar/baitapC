@@ -51,7 +51,7 @@ int main()
     int n,i;
     printf("Nhap so sinh vien: ");
     scanf("%d", &n);
-
+//vong while de khoa dieu kien 2<n<10
     for(i=0;i<n;i++)
     {
         addst(i);
