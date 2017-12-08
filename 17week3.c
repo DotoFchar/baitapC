@@ -15,13 +15,13 @@ void addst(int i)
 {
     char name[30],mssv[10];
     double  mark;
-    printf("%d.\n",i+1);
+    printf("Sinh vien %d.\n",i+1);
     printf("MSSV: ");
-    scanf("%s", id);
+    scanf("%s", mssv);
     printf("NAME: ");
     scanf("%*c%[^\n]", name);
     printf("Diem Cbasic: ");
-    scanf("%lf", &cbasic);
+    scanf("%lf", &mark);
 
     struct student *link = (struct student*) malloc(sizeof(struct student));
     link->mark = mark;
