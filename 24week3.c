@@ -1,5 +1,3 @@
-/*by Nguyen The Vinh*/
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,9 +6,9 @@
 
 struct queue_student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
 };
 
 struct queue_student student[MAX];
@@ -31,17 +29,17 @@ int full_queue()
     else return 0;
 }
 
-void add_student(char *id, char *name, double cbasic)
+void add_student(char *mssv, char *name, double mark)
 {
     if (full_queue()==0)
     {
         if (rear+1==MAX) rear=-1;
         ++rear;
-        strcpy(student[rear].id, id);
+        strcpy(student[rear].mssv, mssv);
         strcpy(student[rear].name, name);
-        student[rear].cbasic = cbasic;
+        student[rear].mark = mark;
 
-        //rintf("%s, %s, %lf\n", student[rear].id, student[rear].name, student[rear].cbasic);
+       printf("%s, %s, %lf\n", student[rear].id, student[rear].name, student[rear].cbasic);
         count++;
     }
 }
@@ -67,9 +65,9 @@ int main()
     {
         do 
         {
-            char id[10], name[30], cbasic[10];
-            if (fscanf(f, "%[^,],%[^,],%s", id, name, cbasic) == EOF) break;
-            add_student(id, name, (double)atof(cbasic));
+            char mssv[10], name[30], mark[10];
+            if (fscanf(f, "%[^,],%[^,],%s", mssv, name, mark) == EOF) break;
+            add_student(mssv, name, (double)atof(mark));
         } while(getc(f)!=EOF);
     }
     fclose(f);
@@ -77,7 +75,7 @@ int main()
     while(count!=0)
     {
         struct queue_student print = remove_student();
-        printf("%s, %s, %lf\n", print.id, print.name, print.cbasic);
+        printf("%s, %s, %lf\n", print.mssv, print.name, print.mark);
     }
     return 0;
 }
