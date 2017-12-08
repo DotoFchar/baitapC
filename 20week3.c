@@ -1,13 +1,11 @@
-/*by Nguyen The Vinh*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 struct student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
     struct student *next;
 } ;
 struct student *head;
@@ -15,9 +13,9 @@ struct student *current;
 
 struct student_clone
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
 } ;
 
 int menu()
@@ -29,7 +27,7 @@ int menu()
     printf("4. Xem tat ca\n");
     printf("5. Thoat\n");
     printf("6. Xuat file\n");
-    printf("7. Doc file sinhvien.dat va sinh vien co Cbasic>4\n");
+    printf("7. Doc file sinhvien.dat va sinh vien co diem Cbasic>4\n");
     scanf("%d%*c",&c);
     return c;
 }
@@ -37,20 +35,20 @@ int menu()
 void insert()
 {
     char name[30];
-    char id[10];
-    double cbasic;
+    char mssv[10];
+    double mark;
     printf("\n");
-    printf("ID: ");
-    scanf("%s", id);
+    printf("MSSV: ");
+    scanf("%s", mssv);
     printf("NAME: ");
     scanf("%*c%[^\n]", name);
-    printf("Cbasic: ");
-    scanf("%lf", &cbasic);
+    printf("Diem Cbasic: ");
+    scanf("%lf", &mark);
 
     struct student *link = (struct student*) malloc(sizeof(struct student));
-    link->cbasic = cbasic;
+    link->mark = mark;
     strcpy(link->name,name);
-    strcpy(link->id,id);
+    strcpy(link->mssv,mssv);
 
     link->next = head;
     head = link;
@@ -62,30 +60,30 @@ void printall()
     
         while(prt != NULL)
         {
-            printf("\nID: %s", prt->id);
+            printf("\nMSSV: %s", prt->mssv);
             printf("\nNAME: %s", prt->name);
-            printf("\nCbasic: %lf\n", prt->cbasic);
+            printf("\nDiem Cbasic: %lf\n", prt->mark);
             prt = prt->next;
         }
 }
 
 int find()
 {
-    char id[10];
+    char mssv[10];
     printf("\nMSSV can tim: ");
-    scanf("%s", id);
-    struct student *fid = head;
-    while(fid != NULL)
+    scanf("%s", mssv);
+    struct student *fms = head;
+    while(fms != NULL)
     {
-        if (strcmp(fid->id,id)==0) 
+        if (strcmp(fms->mssv,mssv)==0) 
         {
             printf("\nResult: \n");
-            printf("\nID: %s", fid->id);
-            printf("\nNAME: %s", fid->name);
-            printf("\nCbasic: %lf\n\n", fid->cbasic);
+            printf("\nMSSV: %s", fms->mssv);
+            printf("\nNAME: %s", fms->name);
+            printf("\nDiem Cbasic: %lf\n\n", fms->mark);
             return 1;
         }
-        fid = fid->next;
+        fms = fms->next;
     }
     printf("\nKhong tim thay ket qua.\n");
     return 0;
@@ -96,13 +94,13 @@ int delete()
     struct student *del = head;
     struct student *prv = NULL;
 
-    char id[10];
+    char ms[10];
     printf("\nMSSV can xoa: ");
-    scanf("%s", id);
+    scanf("%s", ms);
     if (head == NULL) return 0;
     while (del!=NULL)
     {
-        if (strcmp(del->id, id)==0) break;
+        if (strcmp(del->mssv, mssv)==0) break;
         prv = del;
         del = del->next;  
     }
@@ -119,7 +117,7 @@ void putfile()
     file = fopen("sinhvien.dat","w+");
     while (fout != NULL)
     {
-        fprintf(file, "%s,%s,%lf", fout->id, fout->name, fout->cbasic);
+        fprintf(file, "%s,%s,%lf", fout->mssv, fout->name, fout->mark);
         fputc('\n',file);
         fout=fout->next;
     }
@@ -137,9 +135,9 @@ void readfile()
     else {
         do
         {
-            char cbasic[10];
-            if (fscanf(fin,"%[^,],%[^,],%s",sv[count].id, sv[count].name, cbasic) == EOF) break;
-            sv[count].cbasic=(double)atof(cbasic);
+            char mark[10];
+            if (fscanf(fin,"%[^,],%[^,],%s",sv[count].mssv, sv[count].name, mark) == EOF) break;
+            sv[count].mark=(double)atof(mark);
             count++;
         } while (fgetc(fin)!= EOF);
         
@@ -149,9 +147,9 @@ void readfile()
     int i;
     for (i=0; i<count; i++)
     {
-        printf("\nID: %s", sv[i].id);
+        printf("\nMSSV: %s", sv[i].mssv);
         printf("\nNAME: %s", sv[i].name);
-        printf("\nCbasic: %lf\n", sv[i].cbasic);
+        printf("\nDiem Cbasic: %lf\n", sv[i].mark);
     }
 }
 
