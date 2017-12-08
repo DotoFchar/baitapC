@@ -1,13 +1,11 @@
-/*by Nguyen The Vinh*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 struct student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
     struct student *next;
 } ;
 struct student *head;
@@ -25,7 +23,7 @@ int menu()
     return c;
 }
 
-struct student* insertwhere(double cbasic)
+struct student* insertwhere(double mark)
 {
     struct student *insert=head;
     struct student *aft_insert=head->next;
@@ -35,7 +33,7 @@ struct student* insertwhere(double cbasic)
         {
             return insert;
         }
-        else if ((insert->cbasic<cbasic) && (aft_insert->cbasic>cbasic))
+        else if ((insert->mark<mark) && (aft_insert->mark>mark))
         {
             return insert;
         }
@@ -47,34 +45,34 @@ struct student* insertwhere(double cbasic)
 void insert()
 {
     char name[30];
-    char id[10];
-    double cbasic;
+    char mssv[10];
+    double mark;
     printf("\n");
-    printf("ID: ");
-    scanf("%s", id);
+    printf("MSSV: ");
+    scanf("%s", mssv);
     printf("NAME: ");
     scanf("%*c%[^\n]", name);
-    printf("Cbasic: ");
-    scanf("%lf", &cbasic);
+    printf("Diem Cbasic: ");
+    scanf("%lf", &mark);
 
     struct student *link = (struct student*) malloc(sizeof(struct student));
-    link->cbasic = cbasic;
+    link->mark = mark;
     strcpy(link->name,name);
-    strcpy(link->id,id);
+    strcpy(link->mssv,mssv);
     if (head==NULL) 
     {
         link->next = head;
         head=link;
     }
-    else if (head->cbasic>link->cbasic) 
+    else if (head->mark>link->mark) 
     {
         link->next=head;
         head=link;
     }
     else 
     {
-        link->next=insertwhere(cbasic)->next;     
-        insertwhere(cbasic)->next=link;
+        link->next=insertwhere(mark)->next;     
+        insertwhere(mark)->next=link;
     }
     /*link->next = ?;
     head = link;*/
@@ -86,30 +84,30 @@ void printall()
     
         while(prt != NULL)
         {
-            printf("\nID: %s", prt->id);
+            printf("\nMSSV: %s", prt->mssv);
             printf("\nNAME: %s", prt->name);
-            printf("\nCbasic: %lf\n", prt->cbasic);
+            printf("\nDiem Cbasic: %lf\n", prt->mark);
             prt = prt->next;
         }
 }
 
 int find()
 {
-    char id[10];
+    char mssv[10];
     printf("\nMSSV can tim: ");
-    scanf("%s", id);
-    struct student *fid = head;
-    while(fid != NULL)
+    scanf("%s", mssv);
+    struct student *fms = head;
+    while(fms != NULL)
     {
-        if (strcmp(fid->id,id)==0) 
+        if (strcmp(fms->mssv,mssv)==0) 
         {
             printf("\nResult: \n");
-            printf("\nID: %s", fid->id);
-            printf("\nNAME: %s", fid->name);
-            printf("\nCbasic: %lf\n\n", fid->cbasic);
+            printf("\nMSSV: %s", fms->mssv);
+            printf("\nNAME: %s", fms->name);
+            printf("\nDiem Cbasic: %lf\n\n", fms->mark);
             return 1;
         }
-        fid = fid->next;
+        fms = fms->next;
     }
     printf("\nKhong tim thay ket qua.\n");
     return 0;
@@ -120,13 +118,13 @@ int delete()
     struct student *del = head;
     struct student *prv = NULL;
 
-    char id[10];
+    char mssv[10];
     printf("\nMSSV can xoa: ");
-    scanf("%s", id);
+    scanf("%s", mssv);
     if (head == NULL) return 0;
     while (del!=NULL)
     {
-        if (strcmp(del->id, id)==0) break;
+        if (strcmp(del->mssv, mssv)==0) break;
         prv = del;
         del = del->next;  
     }
