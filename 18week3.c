@@ -5,9 +5,9 @@
 #include <string.h>
 struct student
 {
-    char id[10];
+    char mssv[10];
     char name[30];
-    double cbasic;
+    double mark;
     struct student *next;
 } ;
 struct student *head;
@@ -28,20 +28,20 @@ int menu()
 void insert()
 {
     char name[30];
-    char id[10];
-    double cbasic;
+    char mssv[10];
+    double mark;
     printf("\n");
-    printf("ID: ");
-    scanf("%s", id);
+    printf("MSSV: ");
+    scanf("%s", mssv);
     printf("NAME: ");
     scanf("%*c%[^\n]", name);
-    printf("Cbasic: ");
-    scanf("%lf", &cbasic);
+    printf("Diem Cbasic: ");
+    scanf("%lf", &mark);
 
     struct student *link = (struct student*) malloc(sizeof(struct student));
-    link->cbasic = cbasic;
+    link->mark = mark;
     strcpy(link->name,name);
-    strcpy(link->id,id);
+    strcpy(link->mssv,mssv);
 
     link->next = head;
     head = link;
@@ -53,30 +53,30 @@ void printall()
     
         while(prt != NULL)
         {
-            printf("\nID: %s", prt->id);
+            printf("\nMSSV: %s", prt->mssv);
             printf("\nNAME: %s", prt->name);
-            printf("\nCbasic: %lf\n", prt->cbasic);
+            printf("\nDiem Cbasic: %lf\n", prt->mark);
             prt = prt->next;
         }
 }
 
 int find()
 {
-    char id[10];
+    char mssv[10];
     printf("\nMSSV can tim: ");
-    scanf("%s", id);
-    struct student *fid = head;
-    while(fid != NULL)
+    scanf("%s", mssv);
+    struct student *fmssv = head;
+    while(fmssv != NULL)
     {
-        if (strcmp(fid->id,id)==0) 
+        if (strcmp(fmssv->mssv,mssv)==0) 
         {
             printf("\nResult: \n");
-            printf("\nID: %s", fid->id);
-            printf("\nNAME: %s", fid->name);
-            printf("\nCbasic: %lf\n\n", fid->cbasic);
+            printf("\nMSSV: %s", fmssv->mssv);
+            printf("\nNAME: %s", fmssv->name);
+            printf("\nDiem Cbasic: %lf\n\n", fmssv->mark);
             return 1;
         }
-        fid = fid->next;
+        fmssv = fmssv->next;
     }
     printf("\nKhong tim thay ket qua.\n");
     return 0;
@@ -87,13 +87,13 @@ int delete()
     struct student *del = head;
     struct student *prv = NULL;
 
-    char id[10];
+    char mssv[10];
     printf("\nMSSV can xoa: ");
-    scanf("%s", id);
+    scanf("%s", mssv);
     if (head == NULL) return 0;
     while (del!=NULL)
     {
-        if (strcmp(del->id, id)==0) break;
+        if (strcmp(del->mssv, mssv)==0) break;
         prv = del;
         del = del->next;  
     }
